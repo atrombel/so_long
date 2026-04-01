@@ -17,26 +17,24 @@ void	element_count_x(t_struct *game, int y)
 	int	x;
 
 	x = 0;
-	while(x < game->map_length_x)
+	while (x < game->map_length_x)
 	{
 		if (game->map[y][x] == 'C')
 			game->collectible_count++;
-		else if (game->map[y][x]  == 'E')
+		else if (game->map[y][x] == 'E')
 		{
 			game->exit_count++;
 			game->exit_y_index = y;
 			game->exit_x_index = x;
 		}
-		else if (game->map[y][x]  == 'P')
+		else if (game->map[y][x] == 'P')
 		{
 			game->player_count++;
 			game->player_y_index = y;
 			game->player_x_index = x;
 		}
-		else if (game->map[y][x] == '1' || game->map[y][x] == '0')
-			;
-		else
-			game->extra_parameter_count_error = 1;
+		else if (!(game->map[y][x] == '1' || game->map[y][x] == '0'))
+			(game->extra_parameter_count_error = 1);
 		x++;
 	}
 }
@@ -46,7 +44,7 @@ void	element_count(t_struct *game)
 	int	y;
 
 	y = 0;
-	while(y < game->map_length_y)
+	while (y < game->map_length_y)
 	{
 		element_count_x(game, y);
 		y++;
@@ -72,7 +70,8 @@ void	map_element_nbr_check(t_struct *game)
 	}
 	if (game->extra_parameter_count_error == 1)
 	{
-		ft_putstr_fd("Error\nInvalid character: only 0, 1, C, E, P allowed\n", 2);
+		ft_putstr_fd("Error\nInvalid character: only 0, 1, C, E, P allowed\n",
+			2);
 		ft_close_map(game, game->map_length_y);
 	}
 }

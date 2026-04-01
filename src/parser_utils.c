@@ -19,7 +19,7 @@ size_t	ft_strlen_no_endline(const	char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == '\n' || s[i] == '\r' )
+		if (s[i] == '\n' || s[i] == '\r')
 			break ;
 		i++;
 	}
@@ -49,7 +49,7 @@ void	ft_map_length(t_struct	*game)
 		ft_putstr_fd("Error\nEmpty map\n", 2);
 		ft_close_parser(game);
 	}
- 	game->map_length_x = ft_strlen_no_endline(line1);
+	game->map_length_x = ft_strlen_no_endline(line1);
 	if (line1[0] == '\n')
 	{
 		free(line1);
@@ -59,7 +59,8 @@ void	ft_map_length(t_struct	*game)
 	free(line1);
 	if (game->map_length_x == 0 || game->map_length_x < 3)
 	{
-		ft_putstr_fd("Error\ninvalid map (map too small or empty line found)\n", 2);
+		ft_putstr_fd("Error\ninvalid map (map too small or empty line found)\n",
+			2);
 		ft_close_parser(game);
 	}
 	game->map_length_y = 1;
@@ -82,7 +83,8 @@ void	is_ber_rectangular_test(t_struct *game)
 			ft_gnl_flush(game->map_fd);
 			is_there_an_empty_line(line);
 			close(game->map_fd);
-			ft_putstr_fd("Error:\nInvalid map, the map is not rectangular\n", 2);
+			ft_putstr_fd("Error:\nInvalid map, the map is not rectangular\n",
+				2);
 			free(line);
 			exit(1);
 		}

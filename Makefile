@@ -6,7 +6,7 @@
 #    By: atrombel <atrombel@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/14 09:06:45 by atrombel          #+#    #+#              #
-#    Updated: 2026/03/14 09:06:47 by atrombel         ###   ########.fr        #
+#    Updated: 2026/04/01 14:43:06 by atrombel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INCLUDE = -I. -I$(LIBFT_PATH) -I./$(MINILIBX_PATH) -I./include
 all:$(NAME)
 
 $(NAME):$(OBJET) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) $(OBJET) $(INCLUDE) -L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lX11 -lXext -o $@
+	$(CC) $(CFLAGS) $(OBJET) $(INCLUDE) -L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lX11 -lXext -lm  -lz -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH) all
@@ -39,7 +39,7 @@ $(MINILIBX):
 clean:
 	make -C $(LIBFT_PATH) clean
 	make -C $(MINILIBX_PATH) clean
-	rm $(OBJET)
+	rm -f $(OBJET)
 
 fclean: clean
 	rm -f $(NAME)

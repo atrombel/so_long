@@ -18,7 +18,7 @@
 # include "unistd.h"
 # include <fcntl.h>
 # include <stdio.h>
-# define TILE_SIZE 64
+# define TILE 64
 # define MARGIN 100
 
 typedef struct so_long
@@ -49,7 +49,7 @@ typedef struct so_long
 	int		current_nbr_mvmt;
 	int		exit_x_index;
 	int		exit_y_index;
-} t_struct;
+}	t_struct;
 
 void	ft_parser_boss(int argc, char **argv, t_struct *game);
 int		ft_reverse_strncmp_ber_ext_verif(char *s1, char *s2);
@@ -68,7 +68,7 @@ void	map_path_check(t_struct *game);
 void	ft_close_all(t_struct *game);
 void	ft_sprite_error(t_struct *game, char *sprite_name);
 int		ft_render_map(t_struct *game);
-void	ft_map_sprite_mvmt(int key_code,t_struct *game);
+void	ft_map_sprite_mvmt(int key_code, t_struct *game);
 void	x_y_init(int key_code, int *x, int *y);
 int		ft_close_all_2(t_struct *game);
 void	ft_free_sprites(t_struct *game);

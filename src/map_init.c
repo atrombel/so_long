@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-
 void	map_struct_element_set_zero(t_struct *game)
 {
 	game->collectible_count = 0;

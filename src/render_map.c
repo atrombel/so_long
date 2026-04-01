@@ -12,30 +12,41 @@
 
 #include "./include/so_long.h"
 
+void	ft_render_x(t_struct *game, int x, int y)
+{
+	while (x < game->map_length_x)
+	{
+		mlx_put_image_to_window(game->init,
+			game->window, game->floor, x * TILE_SIZE, y * TILE_SIZE);
+		if (game->map[y][x] == '1')
+			mlx_put_image_to_window(game->init,
+				game->window, game->wall, x * TILE_SIZE, y * TILE_SIZE);
+		else if (game->map[y][x] == 'P')
+			mlx_put_image_to_window(game->init,
+				game->window, game->player, x * TILE_SIZE, y * TILE_SIZE);
+		else if (game->map[y][x] == 'C')
+			mlx_put_image_to_window(game->init,
+				game->window, game->item, x * TILE_SIZE, y * TILE_SIZE);
+		else if (game->map[y][x] == 'E')
+			mlx_put_image_to_window(game->init,
+				game->window, game->exit_closed, x * TILE_SIZE, y * TILE_SIZE);
+		else if (game->map[y][x] == 'F')
+			mlx_put_image_to_window(game->init,
+				game->window, game->exit_open, x * TILE_SIZE, y * TILE_SIZE);
+		x++;
+	}
+}
+
 int	ft_render_map(t_struct *game)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while(y < game->map_length_y)
+	while (y < game->map_length_y)
 	{
 		x = 0;
-		while(x < game->map_length_x)
-		{
-			mlx_put_image_to_window(game->init, game->window, game->floor, x * TILE_SIZE, y * TILE_SIZE);
-			if (game->map[y][x] == '1')
-				mlx_put_image_to_window(game->init, game->window, game->wall, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map[y][x] == 'P')
-				mlx_put_image_to_window(game->init, game->window, game->player, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map[y][x] == 'C')
-				mlx_put_image_to_window(game->init, game->window, game->item, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map[y][x] == 'E')
-				mlx_put_image_to_window(game->init, game->window, game->exit_closed, x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map[y][x] == 'F')
-				mlx_put_image_to_window(game->init, game->window, game->exit_open, x * TILE_SIZE, y * TILE_SIZE);
-			x++;
-		}
+		ft_render_x(game, x, y);
 		y++;
 	}
 	return (0);

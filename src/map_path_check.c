@@ -44,7 +44,7 @@ char	**map_tmp_copy(char	**map_tmp, t_struct *game)
 	int	y;
 
 	y = 0;
-	while(y < game->map_length_y)
+	while (y < game->map_length_y)
 	{
 		map_tmp[y] = ft_strdup(game->map[y]);
 		if (!map_tmp[y])
@@ -61,22 +61,14 @@ char	**map_tmp_copy(char	**map_tmp, t_struct *game)
 
 void	flood_validity_nbr_element_check(t_struct *game)
 {
-
-
-printf("\n--- DEBUG FLOOD FILL ---\n");
-printf("Collectibles (Map) : %d | Atteignables : %d\n", game->collectible_count, game->flood_c);///A DEEELELTTEE
-printf("Sorties (Map)      : %d | Atteignables : %d\n", game->exit_count, game->flood_e);
-printf("------------------------\n");
-
-
 	if (game->flood_c != game->collectible_count)
 	{
-		ft_putstr_fd("Error\nInvalid path, all colletibles should be reachable\n",2);
+		ft_putstr_fd("Error\nPath: some collectibles are unreachable\n", 2);
 		ft_close_map(game, game->map_length_y);
 	}
 	if (game->flood_e != game->exit_count)
 	{
-		ft_putstr_fd("Error\nInvalid path, Exit should be reachable\n",2);
+		ft_putstr_fd("Error\nInvalid path, Exit should be reachable\n", 2);
 		ft_close_map(game, game->map_length_y);
 	}
 }
@@ -95,5 +87,4 @@ void	map_path_check(t_struct *game)
 	flood_check(game, map_tmp);
 	ft_free(map_tmp, game->map_length_y);
 	flood_validity_nbr_element_check(game);
-	printf("\033[32m[OK]\033[0m La map est valide.\n");
 }
