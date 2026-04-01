@@ -54,12 +54,10 @@ void	ft_free_sprites(t_struct *game)
 
 void	ft_close_all(t_struct *game)
 {
-		ft_free_sprites(game);
-		if (game->window)
-			mlx_destroy_window(game->init, game->window);
-		mlx_destroy_display(game->init);
-		free(game->init);
-		ft_close_map(game, game->map_length_y);
+	ft_free_sprites(game);
+	if (game->window)
+		mlx_destroy_window(game->init, game->window);
+	mlx_destroy_display(game->init);
+	free(game->init);
+	ft_close_map(game, game->map_length_y);
 }
-///////////// attention APRES LE PARSEUR TOUTE LES FONCTIONS DEVRONT FREE X MINILIBX AUSSI
-

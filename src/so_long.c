@@ -26,7 +26,7 @@ void	ft_window_creation(t_struct *game)//
 	{
 		printf("game->map_length_x  %d\n ",game->map_length_x );
 		ft_putstr_fd("Error\nMap is too large for the current display\n", 2);
-		//mlx_destroy_display(game->init);
+		mlx_destroy_display(game->init);
 		free(game->init);
 		ft_close_map(game, game->map_length_y);
 

@@ -40,7 +40,7 @@ void	final_line_test(t_struct *game)
 	{
 		if (game->map[game->map_length_y - 1][x] != '1')
 		{
-			ft_putstr_fd("Error:\nmap must be surrounded by walls", 2);
+			ft_putstr_fd("Error:\nmap must be surrounded by walls (last line invalid)\n", 2);
 			ft_close_map(game, game->map_length_y);
 		}
 		x++;
@@ -61,7 +61,7 @@ void	midle_line_test(t_struct *game)
 	{
 		if (game->map[y][0] != '1' || game->map[y][game->map_length_x - 1 ] != '1')
 		{
-			ft_putstr_fd("Error:\nmap must be surrounded by walls (last line invalid)\n", 2);
+			ft_putstr_fd("Error:\nmap must be surrounded by walls\n", 2);
 			ft_close_map(game, game->map_length_y);
 		}
 		y++;

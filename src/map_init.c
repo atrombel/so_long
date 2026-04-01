@@ -32,6 +32,8 @@ void	map_struct_element_set_zero(t_struct *game)
 	game->init = NULL;
 	game->exit_x_index = 0;
 	game->exit_y_index = 0;
+	game->init = NULL;
+	game->addr = NULL;
 }
 
 void	fd_map_cursor_reset(t_struct *game, char **argv)

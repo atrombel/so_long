@@ -9,7 +9,7 @@ Description
 
 Instructions
 -----------------------------
-
+need cc and make
 
 how to run:
 $ make
@@ -41,6 +41,7 @@ https://github.com/42paris/minilibx-linux/blob/master/man/man1/mlx_loop.1
 https://tronche.com/gui/x/xlib/events/
 https://stackoverflow.com/questions/73052301/whats-the-need-for-event-masks-in-x11
 https://qst0.github.io/ft_libgfx/man_mlx_loop.html
+https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html
 https://stackoverflow.com/questions/10792361/how-do-i-gracefully-exit-an-x11-event-loop
 
 amazing art by

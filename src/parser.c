@@ -23,18 +23,6 @@ void	argv_nbr_check(int argc)
 		return ;
 }
 
-void	map_testtttttttttttttttttttttttttttttttttttttttttttttttt(t_struct *game)
-{
-	int	i;
-
-	i = 0;
-	while(game->map[i] != NULL)
-	{
-		printf("%s", game->map[i]);
-		i++;
-	}
-}
-
 void	is_there_an_empty_line(char *line)
 {
 	if (!line)
@@ -51,16 +39,15 @@ void	is_there_an_empty_line(char *line)
 void	ft_parser_boss(int argc, char **argv, t_struct *game)
 {
 	argv_nbr_check(argc);
+	ft_access_map_ber_verif(argv[1], game);
 	if (ft_reverse_strncmp_ber_ext_verif(argv[1], ".ber") != 0)
 	{
 		ft_putstr_fd("Error\nthe map format is not valid, it should end by the extension .ber\n", 2);
 		exit(1);
 	}
-	ft_access_map_ber_verif(argv[1], game);
 	ft_map_length(game);
 	is_ber_rectangular_test(game);
 	map_init(game, argv);
 	is_map_surrounded_by_walls(game);
-	map_testtttttttttttttttttttttttttttttttttttttttttttttttt(game);// as supprimer
 	is_map_element_ok_and_path_valid(game);
 }

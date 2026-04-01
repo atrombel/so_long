@@ -19,7 +19,7 @@
 # define HEXA "0123456789abcdef"
 # define HEXA_UP "0123456789ABCDEF"
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 32
 # endif
 
 typedef struct s_list

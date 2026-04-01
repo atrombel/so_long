@@ -19,7 +19,6 @@ size_t	ft_strlen_no_endline(const	char *s)
 	i = 0;
 	while (s[i])
 	{
-
 		if (s[i] == '\n' || s[i] == '\r' )
 			break ;
 		i++;
@@ -48,19 +47,20 @@ void	ft_map_length(t_struct	*game)
 	if (line1 == NULL)
 	{
 		ft_putstr_fd("Error\nEmpty map\n", 2);
-		close(game->map_fd);
-		exit (1);
+		ft_close_parser(game);
 	}
  	game->map_length_x = ft_strlen_no_endline(line1);
-											ft_putstr_fd("\033[34mgame->map_length_x  ", 1);
-											ft_putnbr_fd(game->map_length_x, 1);
-											ft_putstr_fd("\033[0m\n", 1);
+	if (line1[0] == '\n')
+	{
+		free(line1);
+		ft_putstr_fd("Error\ninvalid map (first line is empty)\n", 2);
+		ft_close_parser(game);
+	}
 	free(line1);
 	if (game->map_length_x == 0 || game->map_length_x < 3)
 	{
-		ft_putstr_fd("Error\ninvalid map (map too small and need a player, colletible and an exit)\n", 2);
-		close(game->map_fd);
-		exit(1);
+		ft_putstr_fd("Error\ninvalid map (map too small or empty line found)\n", 2);
+		ft_close_parser(game);
 	}
 	game->map_length_y = 1;
 }
@@ -79,8 +79,9 @@ void	is_ber_rectangular_test(t_struct *game)
 		tmp_length = ft_strlen_no_endline(line);
 		if (tmp_length != game->map_length_x)
 		{
-			close(game->map_fd);
+			ft_gnl_flush(game->map_fd);
 			is_there_an_empty_line(line);
+			close(game->map_fd);
 			ft_putstr_fd("Error:\nInvalid map, the map is not rectangular\n", 2);
 			free(line);
 			exit(1);
@@ -88,7 +89,6 @@ void	is_ber_rectangular_test(t_struct *game)
 		free(line);
 		game->map_length_y++;
 	}
-										printf("\033[34mgame->map_length_y  %d\033[0m\n", game->map_length_y);
 }
 
 int	ft_reverse_strncmp_ber_ext_verif(char *s1, char *s2)

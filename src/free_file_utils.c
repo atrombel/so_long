@@ -30,3 +30,16 @@ int	ft_close_all_2(t_struct *game)
 	ft_close_map(game, game->map_length_y);
 	return (0);
 }
+
+void	ft_gnl_flush(int fd)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		free(line);
+	}
+}

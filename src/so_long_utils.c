@@ -61,9 +61,7 @@ void	x_y_init(int key_code, int *x, int *y)
 void	end(t_struct *game)
 {
 	ft_printf("\nyou \033[0;32mWIN\033[0m\n");
-	mlx_destroy_display(game->init);
-	free(game->init);
-	ft_close_map(game, game->map_length_y);
+	ft_close_all_2(game);
 }
 
 void	ft_map_sprite_mvmt(int key_code,t_struct *game)
@@ -80,7 +78,6 @@ void	ft_map_sprite_mvmt(int key_code,t_struct *game)
 		mlx_put_image_to_window(game->init, game->window, game->floor, game->player_x_index * TILE_SIZE, game->player_y_index * TILE_SIZE);
 	if	(game->map[game->player_y_index][game->player_x_index] == 'E')
 		mlx_put_image_to_window(game->init, game->window, game->exit_closed, game->player_x_index * TILE_SIZE, game->player_y_index * TILE_SIZE);
-
 	if (!(game->map[game->player_y_index][game->player_x_index] == 'E'))
 		game->map[game->player_y_index][game->player_x_index] = '0';
 	game->player_x_index += x;
@@ -91,5 +88,7 @@ void	ft_map_sprite_mvmt(int key_code,t_struct *game)
 		end(game);
 	if(x != 0 || y != 0)
 		ft_current_nbr_mvmt(game);
-	game->map[game->player_y_index][game->player_x_index] = 'P';
+	if (!(game->map[game->player_y_index][game->player_x_index] == 'E'))
+		game->map[game->player_y_index][game->player_x_index] = 'P';
 }
+

@@ -72,12 +72,6 @@ void	ft_map_sprite_mvmt(int key_code,t_struct *game);
 void	x_y_init(int key_code, int *x, int *y);
 int		ft_close_all_2(t_struct *game);
 void	ft_free_sprites(t_struct *game);
-
-
-
-
-
-
-void	map_testtttttttttttttttttttttttttttttttttttttttttttttttt(t_struct *game);
+void	ft_gnl_flush(int fd);
 
 #endif
